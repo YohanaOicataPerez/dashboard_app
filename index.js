@@ -11,6 +11,8 @@ app.use(express.json());
 // Importar rutas
 const empresaRoutes = require('./src/routes/empresaRoutes');
 const authRoutes = require('./src/routes/authRoutes');
+const datosRoutes = require('./src/routes/datosRoutes');
+app.use('/api', datosRoutes);
 
 // Rutas principales
 app.use('/api/auth', authRoutes);
