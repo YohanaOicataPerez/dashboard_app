@@ -1,16 +1,19 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 
 // Conexión a la base de datos
 const pool = require('./src/config/db');
 
-// Importar rutas
-const empresaRoutes = require('./src/routes/empresaRoutes');
-
-// Middleware
+// Middleware PRIMERO
 app.use(express.json());
 
+// Importar rutas
+const empresaRoutes = require('./src/routes/empresaRoutes');
+const authRoutes = require('./src/routes/authRoutes');
+
 // Rutas principales
+app.use('/api/auth', authRoutes);
 app.use('/api', empresaRoutes);
 
 // Ruta de prueba
